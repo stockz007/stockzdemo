@@ -1,0 +1,7 @@
+Flask
+gunicorn
+requests
+vaderSentiment
+Flask-APScheduler
+python-dotenv
+twilio

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Z – Positive Business News</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header><h1>Stock Z</h1></header>
+  <main id="news-container">Loading…</main>
+  <script>
+    async function load(){
+      const res = await fetch('/api/news');
+      const data = await res.json();
+      const c = document.getElementById('news-container');
+      c.innerHTML = data.length
+        ? data.map(a=>`<div class="card"><h2>${a.title}</h2><p><a href="${a.url}" target="_blank">${a.source}</a></p></div>`).join('')
+        : '<p>No positive news now.</p>';
+    }
+    load(); setInterval(load,60000);
+  </script>
+</body>
+</html>
